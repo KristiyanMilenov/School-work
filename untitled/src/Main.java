@@ -1,48 +1,77 @@
-import java.util.Scanner;
+class Human {
+    String name;
+
+    Human(String name) {
+        this.name = name;
+    }
+
+    void sayHello() {
+        System.out.println(name + " says: Hello");
+    }
+
+    void displayDetails() {
+        System.out.println("Name: " + name);
+    }
+}
+class American extends Human {
+    American(String name) {
+        super(name);
+    }
+
+    @Override
+    void sayHello() {
+        System.out.println(name + " says: Hello");
+    }
+
+    @Override
+    void displayDetails() {
+        System.out.println("American Name: " + name);
+    }
+}
+
+class French extends Human {
+    French(String name) {
+        super(name);
+    }
+
+    @Override
+    void sayHello() {
+        System.out.println(name + " says: Bonjour");
+    }
+
+    @Override
+    void displayDetails() {
+        System.out.println("French Name: " + name);
+    }
+}
+
+class Japanese extends Human {
+    Japanese(String name) {
+        super(name);
+    }
+
+    @Override
+    void sayHello() {
+        System.out.println(name + " says: Konnichiwa");
+    }
+
+    @Override
+    void displayDetails() {
+        System.out.println("Japanese Name: " + name);
+    }
+}
 public class Main {
     public static void main(String[] args) {
-        Scanner reader = new Scanner(System.in);
-        System.out.println("Enter a category(History,Science,Sports): ");
-        String choice = reader.nextLine();
-        switch (choice) {
-            case "History":
-                String a1;
-                if (choice.equals("History")) {
-                    System.out.println("When did WW1 start?");
-                    a1 = reader.nextLine();
+        Human[] people = new Human[3];
+        people[0] = new American("John");
+        people[1] = new French("Marie");
+        people[2] = new Japanese("Hiro");
 
-                    if (a1.equals("1914")) {
-                        System.out.println("Correct! + 1 point");
-                    } else {
-                        System.out.println("Incorect. the correct answer is 1914");
-                    }
-                }
-            case "Science":
-              String a2;
-                if (choice.equals("Science")) {
-                    System.out.println("What do you get when you mix hydrogen and oxygen");
-                    a2 = reader.nextLine();
 
-                    if (a2.equals("water")) {
-                        System.out.println("Correct! + 1 point");
-                    } else {
-                        System.out.println("Incorect. the correct answer is water");
-                    }
-                }
-            case "Sports":
-                String a3;
-                if (choice.equals("Sports")) {
-                    System.out.println("Who won the 2024 euros");
-                    a3 = reader.nextLine();
-
-                    if (a3.equals("Spain")) {
-                        System.out.println("Correct! + 1 point");
-                    } else {
-                        System.out.println("Incorect. the correct answer is Spain");
-                    }
-                }
-            default:
-                System.out.println("Invalid category choice");
+        for (Human person : people) {
+            person.displayDetails();
+            person.sayHello();
+            System.out.println();
         }
     }
 }
